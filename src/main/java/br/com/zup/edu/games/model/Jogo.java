@@ -24,10 +24,10 @@ public class Jogo {
         this.link = link;
     }
 
-    @Deprecated
     /**
      * @deprecated Construtor para uso exclusivo do Hibernate
      */
+    @Deprecated
     public Jogo() {
     }
 
