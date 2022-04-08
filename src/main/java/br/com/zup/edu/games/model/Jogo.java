@@ -1,6 +1,8 @@
 package br.com.zup.edu.games.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Jogo {
@@ -18,6 +20,9 @@ public class Jogo {
     @Column(nullable = false)
     private String link;
 
+    @ManyToMany(mappedBy = "jogos")
+    private Set<Pessoa> players = new HashSet<>();
+
     public Jogo(String nome, String descricao, String link) {
         this.nome = nome;
         this.descricao = descricao;
@@ -29,6 +34,10 @@ public class Jogo {
      */
     @Deprecated
     public Jogo() {
+    }
+
+    public void adicionar(Pessoa pessoa) {
+        this.players.add(pessoa);
     }
 
     public Long getId() {
